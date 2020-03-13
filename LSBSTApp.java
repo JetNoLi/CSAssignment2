@@ -21,8 +21,7 @@ public class LSBSTApp{
 	public void printAreas(String stage, String day, String startTime){
 		
 		try{
-			//LSC item = LSTree.find(new LSC(stage,day,startTime)).getData()// finds the matching LSC in the
-			System.out.println("Areas Affected: " + Arrays.toString((LSTree.find(new LSC(stage,day,startTime)).getData()).getZones()));// check for not found
+			System.out.println("Areas Affected: " + Arrays.toString((LSTree.find(new LSC(stage,day,startTime)).data).getZones()));// check for not found
 		
 			}
 
@@ -53,7 +52,7 @@ public class LSBSTApp{
 	/** Instrumentation method which has same comparitive operations as printAreas but does not print anything */
 	public void printAreasNull(String stage, String day, String startTime){
           	try{
-                        LSC item = LSTree.find(new LSC(stage,day,startTime)).getData();
+                        LSC item = LSTree.find(new LSC(stage,day,startTime)).data;
 
                         }
 
