@@ -39,7 +39,16 @@ public class LSAVLTreeApp{
 		LSAVLTreeApp LSCAVLTree = new LSAVLTreeApp();
 
 		try{
-			Scanner scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
+			Scanner scFile;
+			if (args.length != 4){
+
+				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
+				}
+
+			else{
+				scFile = new Scanner(new File(args[3]));
+				}
+
 			while(scFile.hasNext()){
 				LSCAVLTree.addToTree(new LSC(scFile.nextLine()));
 				}
@@ -49,7 +58,7 @@ public class LSAVLTreeApp{
 			System.out.println("File Not Found");
 			}
 
-		if (args.length == 3){
+		if (args.length == 3 | args.length == 4){
 			LSCAVLTree.printAreas(args[0], args[1], args[2]);
 			}
 

@@ -68,32 +68,43 @@ public class LSBSTApp{
 	public static void main(String[] args){
 		LSBSTApp LSCTree = new LSBSTApp(); // create and instance of Object which store LSC BST
 		try{
-			Scanner scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
-		
+			Scanner scFile;
+
+			if (args.length != 4){
+				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
+				}
+			else{
+				scFile = new Scanner(new File(args[3]));
+				}
+
 			while(scFile.hasNextLine()){
 				LSCTree.addToTree(new LSC(scFile.nextLine()));
 				}
 			}
-
+			
+		
 		catch (FileNotFoundException e){
 			System.out.println("File Not Found");
 			}
 
-		if (args.length == 3){
+		
+			
+		
+		if (args.length == 3 || args.length == 4){
 			LSCTree.printAreas(args[0],args[1],args[2]);
-			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-			System.out.println("Find Counter: " + LSCTree.getFinCounter());
+			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+			//System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
 		else if (args.length == 0){
 			LSCTree.printAllAreas();
-			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        System.out.println("Find Counter: " + LSCTree.getFinCounter());
+			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        //System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
 		else{
 			System.out.println("Error input entered in Incorrectly. Please Enter in the form:");
 			System.out.println(" stage day time, i.e. 1 1 10");
-			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        System.out.println("Find Counter: " + LSCTree.getFinCounter());
+			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        //System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
 
 
