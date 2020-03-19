@@ -29,8 +29,9 @@ public class Util{
                                 }
                         dataNoT[i] = dataT[count];
                 	}
-		
+
 		return dataNoT;
+		
 		}
 	}
 

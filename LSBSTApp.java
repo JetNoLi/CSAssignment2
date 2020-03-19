@@ -93,26 +93,22 @@ public class LSBSTApp{
 
 		//
 
-		if (data.length == 3 && !Arrays.toString(data).contains("txt")){
+		if (data.length == 3){
 			LSCTree.printAreas(data[0],data[1],data[2]);
-			}
-
-		else if (data.length == 4){ // for Automated Python Script
-
-		        if (T){ //T = Test Part 1 - 4
-			       	LSCTree.printAreas(data[0],data[1],data[2]);
-                        	System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+			if (T){
+				System.out.println("Insert Counter: " + LSCTree.getInsCounter());
                         	System.out.println("Find Counter: " + LSCTree.getFinCounter());
 				}
-			else{
-				LSCTree.printAreasNull(data[0],data[1],data[2]);
-	 			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        	System.out.println("Find Counter: " + LSCTree.getFinCounter());
-				}
-			
+			}
+
+		else if (data.length == 4 & !T){ // for Automated Python Script Part 5
+
+			LSCTree.printAreasNull(data[0],data[1],data[2]);
+	 		System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
 			
-		else if (data.length == 0 | (data.length == 1 && data[0].contains("txt"))){
+		else if (data.length == 0){
 			LSCTree.printAllAreas();
 			if (T){
 				System.out.println("Insert Counter: " + LSCTree.getInsCounter());
