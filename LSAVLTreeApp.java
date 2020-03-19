@@ -27,6 +27,17 @@ public class LSAVLTreeApp{
 			}
 		}
 
+	public void printAreasNull(String stage, String day, String startTime){
+		try{
+			LSC item = LSAVLTree.find(new LSC(stage,day,startTime)).data;
+			}
+
+		catch(NullPointerException e){
+			System.out.println("Area Not Found");
+			}
+
+		}
+
 	public void printAllAreas(){
 		LSAVLTree.inOrder();
 		}
@@ -41,14 +52,16 @@ public class LSAVLTreeApp{
 		}
 
 
+
 	public static void main(String[] args){
 		//create instance of object to create AVLTree
+		boolean T = Util.getT(args);
 
 		LSAVLTreeApp LSCAVLTree = new LSAVLTreeApp();
 
 		try{
 			Scanner scFile;
-			if (args.length == 4 && args[3].equals("I")){
+			if (args.length == 4 && !T){
 
 				scFile = new Scanner(new File(args[3]));
 				}
@@ -61,23 +74,49 @@ public class LSAVLTreeApp{
 				LSCAVLTree.addToTree(new LSC(scFile.nextLine()));
 				}
 			}
+
 	
 		catch(FileNotFoundException e){
 			System.out.println("File Not Found");
 			}
 
-		if (args.length == 3 | args.length == 4){
-			LSCAVLTree.printAreas(args[0], args[1], args[2]);
+		
+		String[] data = Util.getDataNoT(args,T);
+
+		
+		if (data.length == 3){
+			System.out.println(Arrays.toString(data));
+			LSCAVLTree.printAreas(data[0], data[1], data[2]);
+			if (T){
+				System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
+				System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
+				}
+
 			}
 
-		else if (args.length == 0){
-			LSCAVLTree.printAllAreas();
+		else if(data.length == 4 & !T){
+			LSCAVLTree.printAreasNull(data[0], data[1], data[2]);
+			System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
+                        System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
 			}
+
+		else if (data.length == 0){
+			LSCAVLTree.printAllAreas();
+			if (T){
+				System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
+                                System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
+				}
+
+			}
+		
 		else{
 			System.out.println("Error input entered in Incorrectly. Please Enter in the form:");
                         System.out.println(" stage day time, i.e. 1 1 10");
-                        //System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        //System.out.println("Find Counter: " + LSCTree.getFinCounter());
+                        if (T){
+				System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
+                                System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
+				}
+
                         }
 		}
 	}
