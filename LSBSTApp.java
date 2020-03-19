@@ -63,13 +63,8 @@ public class LSBSTApp{
 
 	//main
 	public static void main(String[] args){
-		boolean T = false;
 		
-		for (int i = 0; i < args.length; i++){
-			if (args[i].equals("T")){
-				T = true;
-				}
-			}
+		boolean T = Util.getT(args);
 
 		LSBSTApp LSCTree = new LSBSTApp(); // create and instance of Object which store LSC BST
 		try{
@@ -90,62 +85,49 @@ public class LSBSTApp{
 		
 		catch (FileNotFoundException e){
 			System.out.println("File Not Found");
-			}
-
-		//
-		int count = 0;		
-		String[] arr;
-		if (T){
-			arr = new String[args.length-1];
-			}
-		else{
-			arr = new String[args.length];
-			}
-
-		
-		for (int i = 0; i< arr.length; i++){
 			
-			count++;
-			if ( args[i].equals("T")){
-				count++;
-				}
-			arr[i] = args[count];
 			}
 
 		//
+		String[] data = Util.getDataNoT(args,T);
 
-		if (arr.length == 3){
-			LSCTree.printAreas(args[0],args[1],args[2]);
-			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-			//System.out.println("Find Counter: " + LSCTree.getFinCounter());
+		//
+
+		if (data.length == 3 && !Arrays.toString(data).contains("txt")){
+			LSCTree.printAreas(data[0],data[1],data[2]);
 			}
 
-		else if (arr.length == 4){// Part 5
-		       //if (args[3].equals("T")){ //T = Test Part 1 - 4
-			       	//necessary test requirements
-			       	//LSCTree.printAreas(args[0],args[1],args[2]);
-		       		//System.out.println("Insert Counter:	" + LSCTree.getInsCounter());
-				//System.out.println("Find Counter:	" + LSCTree.getFinCounter());
-		 		//}
-       			
-		    
-				LSCTree.printAreasNull(args[0],args[1],args[2]);
+		else if (data.length == 4){ // for Automated Python Script
+
+		        if (T){ //T = Test Part 1 - 4
+			       	LSCTree.printAreas(data[0],data[1],data[2]);
+                        	System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        	System.out.println("Find Counter: " + LSCTree.getFinCounter());
+				}
+			else{
+				LSCTree.printAreasNull(data[0],data[1],data[2]);
 	 			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
                         	System.out.println("Find Counter: " + LSCTree.getFinCounter());
 				}
 			
-
-			
-		else if (arr.length == 0){
-			LSCTree.printAllAreas();
-			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        //System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
+			
+		else if (data.length == 0 | (data.length == 1 && data[0].contains("txt"))){
+			LSCTree.printAllAreas();
+			if (T){
+				System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        	System.out.println("Find Counter: " + LSCTree.getFinCounter());
+				}
+			}
+
 		else{
 			System.out.println("Error input entered in Incorrectly. Please Enter in the form:");
 			System.out.println(" stage day time, i.e. 1 1 10");
-			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
-                        //System.out.println("Find Counter: " + LSCTree.getFinCounter());
+			if (T){
+
+				System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        	System.out.println("Find Counter: " + LSCTree.getFinCounter());
+				}
 			}
 
 
