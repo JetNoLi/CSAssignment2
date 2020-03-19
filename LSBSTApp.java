@@ -45,9 +45,6 @@ public class LSBSTApp{
 		return LSTree.getFinCounter();
 		}
 
-	public void resetCounter(){
-		LSTree.resetCounter();
-		}
 
 	/** Instrumentation method which has same comparitive operations as printAreas but does not print anything */
 	public void printAreasNull(String stage, String day, String startTime){
@@ -66,15 +63,23 @@ public class LSBSTApp{
 
 	//main
 	public static void main(String[] args){
+		boolean T = false;
+		
+		for (int i = 0; i < args.length; i++){
+			if (args[i].equals("T")){
+				T = true;
+				}
+			}
+
 		LSBSTApp LSCTree = new LSBSTApp(); // create and instance of Object which store LSC BST
 		try{
 			Scanner scFile;
 
-			if (args.length != 4){
-				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
+			if (args.length == 4 && !T){
+				scFile = new Scanner(new File(args[3]));
 				}
 			else{
-				scFile = new Scanner(new File(args[3]));
+				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
 				}
 
 			while(scFile.hasNextLine()){
@@ -87,15 +92,51 @@ public class LSBSTApp{
 			System.out.println("File Not Found");
 			}
 
+		//
+		int count = 0;		
+		String[] arr;
+		if (T){
+			arr = new String[args.length-1];
+			}
+		else{
+			arr = new String[args.length];
+			}
+
 		
+		for (int i = 0; i< arr.length; i++){
 			
-		
-		if (args.length == 3 || args.length == 4){
+			count++;
+			if ( args[i].equals("T")){
+				count++;
+				}
+			arr[i] = args[count];
+			}
+
+		//
+
+		if (arr.length == 3){
 			LSCTree.printAreas(args[0],args[1],args[2]);
 			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
 			//System.out.println("Find Counter: " + LSCTree.getFinCounter());
 			}
-		else if (args.length == 0){
+
+		else if (arr.length == 4){// Part 5
+		       //if (args[3].equals("T")){ //T = Test Part 1 - 4
+			       	//necessary test requirements
+			       	//LSCTree.printAreas(args[0],args[1],args[2]);
+		       		//System.out.println("Insert Counter:	" + LSCTree.getInsCounter());
+				//System.out.println("Find Counter:	" + LSCTree.getFinCounter());
+		 		//}
+       			
+		    
+				LSCTree.printAreasNull(args[0],args[1],args[2]);
+	 			System.out.println("Insert Counter: " + LSCTree.getInsCounter());
+                        	System.out.println("Find Counter: " + LSCTree.getFinCounter());
+				}
+			
+
+			
+		else if (arr.length == 0){
 			LSCTree.printAllAreas();
 			//System.out.println("Insert Counter: " + LSCTree.getInsCounter());
                         //System.out.println("Find Counter: " + LSCTree.getFinCounter());

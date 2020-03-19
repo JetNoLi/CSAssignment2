@@ -31,6 +31,14 @@ public class LSAVLTreeApp{
 		LSAVLTree.inOrder();
 		}
 
+	//Instrumentation Method
+	public int getInsCounter(){
+		return LSAVLTree.getInsCounter();
+		}
+
+	public int getFinCounter(){
+		return LSAVLTree.getFinCounter();
+		}
 
 
 	public static void main(String[] args){
@@ -40,13 +48,13 @@ public class LSAVLTreeApp{
 
 		try{
 			Scanner scFile;
-			if (args.length != 4){
+			if (args.length == 4 && args[3].equals("I")){
 
-				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
+				scFile = new Scanner(new File(args[3]));
 				}
 
 			else{
-				scFile = new Scanner(new File(args[3]));
+				scFile = new Scanner(new File("Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt"));
 				}
 
 			while(scFile.hasNext()){

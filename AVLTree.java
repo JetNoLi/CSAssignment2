@@ -5,6 +5,10 @@
 
 public class AVLTree<dataType extends Comparable<? super dataType>> extends BinaryTree<dataType>
 {
+
+	//Instrumentation instance variables
+	private int insCounter; //insert
+	private int finCounter; //find
    public int height ( BinaryTreeNode<dataType> node )
    {
       if (node != null)
@@ -68,6 +72,8 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
    {
       if (node == null)
          return new BinaryTreeNode<dataType> (d, null, null);
+      
+      insCounter++; //instr
       if (d.compareTo (node.data) <= 0)
          node.left = insert (d, node.left);
       else
@@ -125,12 +131,20 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
    }
    public BinaryTreeNode<dataType> find ( dataType d, BinaryTreeNode<dataType> node )
    {
+      
+	finCounter++; //instr	
       if (d.compareTo (node.data) == 0) 
          return node;
-      else if (d.compareTo (node.data) < 0)
+
+      else if (d.compareTo (node.data) < 0){
+	 finCounter++;
          return (node.left == null) ? null : find (d, node.left);
-      else
+      	 }
+
+      else{
+	 finCounter++;
          return (node.right == null) ? null : find (d, node.right);
+      	 }
    }
    
    public void treeOrder ()
@@ -148,5 +162,17 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends Bina
          treeOrder (node.right, level+1);
       }
    }
+
+   //Instrumentation Methods
+
+   public int getFinCounter(){
+	return finCounter;
+   	}
+
+   public int getInsCounter(){
+	return insCounter;
+   	}
+
+   
 }
 
