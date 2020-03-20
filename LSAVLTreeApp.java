@@ -96,8 +96,8 @@ public class LSAVLTreeApp{
 
 		else if(data.length == 4 & !T){
 			LSCAVLTree.printAreasNull(data[0], data[1], data[2]);
-			System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
-                        System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
+			System.out.println("I: " + LSCAVLTree.getInsCounter());
+                        System.out.println("F: " + LSCAVLTree.getFinCounter());
 			}
 
 		else if (data.length == 0){
