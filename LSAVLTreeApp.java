@@ -85,7 +85,7 @@ public class LSAVLTreeApp{
 
 		
 		if (data.length == 3){
-			System.out.println(Arrays.toString(data));
+			
 			LSCAVLTree.printAreas(data[0], data[1], data[2]);
 			if (T){
 				System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
