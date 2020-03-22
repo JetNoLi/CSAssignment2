@@ -15,7 +15,13 @@ public class LSC implements Comparable<LSC>{
 		this.day = day;
 		this.time = time;
 		zones = null;
-		comparable = stage + day  + time;
+		
+		String compDay = day;
+		if (day.length() == 1){
+			compDay = day + "0";
+			}
+
+		comparable = stage + compDay  + time;
 		}
 
 	/**constructor which takes in a String in the format of each line in the Load Shedding data file, allowing us to read in each line as an object by passing each line as a string to a new instance of a LSC object which can then be added to either data structure */
@@ -28,7 +34,14 @@ public class LSC implements Comparable<LSC>{
 		day = varArray[1];
 		time = varArray[2];
 		this.zones = zoneArray;
-		comparable = stage + day + time;
+
+		String compDay = day;
+		if (day.length() == 1){
+                        compDay = day + "0";
+                        }
+
+                comparable = stage + compDay  + time;
+
 		}
 
 	

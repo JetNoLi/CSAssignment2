@@ -2,7 +2,9 @@ public class Util{
 
 	public static boolean getT(String[] dataT){
 		boolean T = false;
-
+		if (dataT.length == 0){
+			return false;
+			}
 		if (dataT[dataT.length-1].equals("T")){
 			T = true;
                         }
@@ -10,7 +12,7 @@ public class Util{
 		}
 
 	public static String[] getDataNoT(String[] dataT, boolean T){
-		if(!T){
+		if(!T || dataT.length == 0){
 			return dataT;
 			}
 
