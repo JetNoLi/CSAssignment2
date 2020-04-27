@@ -99,7 +99,7 @@ public class LSAVLTreeApp{
 
 		else if(data.length == 4 & !T){
 			LSCAVLTree.printAreasNull(data[0], data[1], data[2]);
-			System.out.println("Height: " + LSCAVLTree.getHeightOfTree());
+			//System.out.println("Height: " + LSCAVLTree.getHeightOfTree());
 			System.out.println("I: " + LSCAVLTree.getInsCounter());
                         System.out.println("F: " + LSCAVLTree.getFinCounter());
 			}
