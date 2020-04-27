@@ -18,7 +18,7 @@ public class LSC implements Comparable<LSC>{
 		
 		String compDay = day;
 		if (day.length() == 1){
-			compDay = day + "0";
+			compDay = "0" + day ;
 			}
 
 		comparable = stage + compDay  + time;
@@ -37,7 +37,7 @@ public class LSC implements Comparable<LSC>{
 
 		String compDay = day;
 		if (day.length() == 1){
-                        compDay = day + "0";
+                        compDay = "0" + day ;
                         }
 
                 comparable = stage + compDay  + time;

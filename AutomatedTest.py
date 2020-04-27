@@ -54,10 +54,12 @@ for x in range(1,11):
             worst = [0,0]
             averageC = [0,0]
             average =[0,0]
+            
+            count = 0
 
             for q in findCounters:
                 comparable = int(q)
-                if (q == findCounters[0]):
+                if (count == 0):
                     best[0] = comparable
                     worst[0] = comparable
                     averageC[0] += comparable
@@ -73,8 +75,9 @@ for x in range(1,11):
 
                     averageC[0]= averageC[0] +comparable
                     averageC[1]+= 1
-            
-        
+                
+                count += 1
+                
             average[0] = averageC[0]/averageC[1]
             averageCalc = [0,0]
             
@@ -111,7 +114,6 @@ for x in range(1,11):
             f.write("\n")
             
          
-
 
             
                 

@@ -51,7 +51,9 @@ public class LSAVLTreeApp{
 		return LSAVLTree.getFinCounter();
 		}
 
-
+	public int getHeightOfTree(){
+		return LSAVLTree.getHeight();
+	}
 
 	public static void main(String[] args){
 		//create instance of object to create AVLTree
@@ -88,6 +90,7 @@ public class LSAVLTreeApp{
 			
 			LSCAVLTree.printAreas(data[0], data[1], data[2]);
 			if (T){
+				//System.out.println("Height: " + LSCAVLTree.getHeightOfTree());
 				System.out.println("Insert Counter: " + LSCAVLTree.getInsCounter());
 				System.out.println("Find Counter: " + LSCAVLTree.getFinCounter());
 				}
@@ -96,6 +99,7 @@ public class LSAVLTreeApp{
 
 		else if(data.length == 4 & !T){
 			LSCAVLTree.printAreasNull(data[0], data[1], data[2]);
+			System.out.println("Height: " + LSCAVLTree.getHeightOfTree());
 			System.out.println("I: " + LSCAVLTree.getInsCounter());
                         System.out.println("F: " + LSCAVLTree.getFinCounter());
 			}
