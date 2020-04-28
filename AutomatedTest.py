@@ -2,6 +2,12 @@ import subprocess
 
 fileName = "SetData_.txt"
 
+findCompArrayBST = []
+insertCompArrayBST = []
+
+findCompArrayAVL = []
+insertCompArrayAVL = []
+
 for x in range(1,11):
     curFileName = fileName.replace("_",str(x)) # sample files = curFileName
     with open(fileName,"w") as f:
@@ -108,13 +114,35 @@ for x in range(1,11):
             average[1] = averageCalc[0]/averageCalc[1]
             print(curOutFileName)
             
-            f.write("Find (B,W,A): " + str(best[0]) + ", " + str(worst[0]) + ", " + str(average[0]))
-            f.write("\n")
-            f.write("Insert (B,W,A): " + str(best[1]) + ", " + str(worst[1]) + ", " + str(average[1]))
-            f.write("\n")
+            outputFind = "Find (B,W,A): " + str(best[0]) + ", " + str(worst[0]) + ", " + str(average[0])
+            outputInsert ="Insert (B,W,A): " + str(best[1]) + ", " + str(worst[1]) + ", " + str(average[1])
             
-         
+            f.write(outputFind)
+            f.write("\n")
+            f.write(outputInsert)
+            f.write("\n")
 
+            if y == 0:
+                findCompArrayBST.append(str(x) + ".) " + outputFind)
+                insertCompArrayBST.append(str(x) + ".) " + outputInsert)
+            
+            elif y == 1:
+                findCompArrayAVL.append(str(x) + ".) " + outputFind)
+                insertCompArrayAVL.append(str(x) + ".) " + outputInsert)
+            
+with open("comparisonsBST","w") as f:
+    for i in range(10):
+        f.write(findCompArrayBST[i])
+        f.write("\n")
+        f.write(insertCompArrayBST[i])
+        f.write("\n")
+
+with open("comparisonsAVL","w") as f:
+    for i in range(10):
+        f.write(findCompArrayAVL[i])
+        f.write("\n")
+        f.write(insertCompArrayAVL[i])
+        f.write("\n")
             
                 
 
